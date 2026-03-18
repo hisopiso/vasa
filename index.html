@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Zajímavostí o Brně & Fotogalerie</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* NOVÉ BARVY: Tmavý motiv s modrým akcentem */
+            --primary-color: #3b82f6; /* Zářivá modrá */
+            --bg-color: #111827;      /* Velmi tmavě šedá (pozadí) */
+            --text-color: #f3f4f6;    /* Světle šedá (text) */
+            --card-bg: #1f2937;       /* Tmavě šedá (karty) */
+        }
+
+        body {
+            /* NOVÝ FONT */
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e3a8a; /* Tmavší modrá pro hlavičku */
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        header h1 {
+            margin: 0 0 1rem 0;
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        header p {
+            font-weight: 300;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigace pro záložky */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .tab-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border-radius: 12px 12px 0 0;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .tab-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .tab-btn.active {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+            min-height: 50vh;
+        }
+
+        /* Skrytí obsahu, který není aktivní */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Styly pro fakta */
+        .fact-card {
+            background: var(--card-bg);
+            border-left: 6px solid var(--primary-color);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+
+        .fact-card:hover {
+            transform: translateX(5px);
+        }
+
+        .fact-card h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 600;
+        }
+
+        .fact-number {
+            background: var(--primary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            font-weight: 700;
+        }
+
+        .fact-card p {
+            font-weight: 300;
+        }
+
+        /* Styly pro galerii */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery-item p {
+            margin: 15px 0 5px 0;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #0f172a; /* Úplně nejtmavší modro-šedá */
+            color: #9ca3af;
+            margin-top: 4rem;
+            font-weight: 300;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>To nejlepší z Brna</h1>
+        <p>Zajímavosti a krásy moravské metropole</p>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('zajimavosti')">7 Zajímavostí</button>
+            <button class="tab-btn" onclick="openTab('galerie')">Fotogalerie</button>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <div id="zajimavosti" class="tab-content active">
+            <article class="fact-card">
+                <h2><span class="fact-number">1</span> Poledne se zvoní v 11:00</h2>
+                <p>Na památku obléhání Brna Švédy (1645) zvoní na Petrově poledne už v 11 hodin dopoledne. Švédský generál totiž slíbil, že odtáhne, pokud město nedobyde do poledne. Brňané to odzvonili o hodinu dřív a zachránili se.</p>
+            </article>
+
+            <article class="fact-card">
+                <h2><span class="fact-number">2</span> Brněnský drak je krokodýl</h2>
+                <p>Legendární brněnský drak visící ve Staré radnici je vycpaný krokodýl nilský, pravděpodobně dar od tureckého sultána ze 17. století.</p>
+            </article>
+
+            <article class="fact-card">
+                <h2><span class="fact-number">3</span> Křivá věžička jako pomsta</h2>
+                <p>Prostřední věžička gotického portálu Staré radnice je schválně nakřivo. Mistr Anton Pilgram ji tak vytesal jako pomstu radním, kteří mu nezaplatili domluvenou částku.</p>
+            </article>
+
+            <article class="fact-card">
+                <h2><span class="fact-number">4</span> Vila Tugendhat</h2>
+                <p>Jediná památka moderní architektury v ČR zapsaná v UNESCO. V roce 1992 zde byla podepsána dohoda o rozdělení Československa.</p>
+            </article>
+
+            <article class="fact-card">
+                <h2><span class="fact-number">5</span> Druhá největší kostnice</h2>
+                <p>Pod kostelem sv. Jakuba leží přes 50 000 obětí morových ran a válek. Je to druhá největší kostnice v Evropě hned po pařížských katakombách.</p>
+            </article>
+
+            <article class="fact-card">
+                <h2><span class="fact-number">6</span> Kapucínské mumie</h2>
+                <p>V Kapucínské kryptě najdete přirozeně mumifikovaná těla mnichů a měšťanů. Zachovala se díky specifickému proudění vzduchu bez jakéhokoliv balzamování.</p>
+            </article>
+
+            <article class="fact-card">
+                <h2><span class="fact-number">7</span> Moravský Manchester</h2>
+                <p>V 19. století bylo Brno světovým centrem textilního průmyslu plným továren a komínů, díky čemuž získalo svou tehdejší industriální přezdívku.</p>
+            </article>
+        </div>
+
+        <div id="galerie" class="tab-content">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Spilberk_castle_Brno.jpg/800px-Spilberk_castle_Brno.jpg" alt="Hrad Špilberk" onerror="this.src='https://via.placeholder.com/800x600?text=Obrázek+nenalezen'">
+                    <p>Hrad Špilberk</p>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Brno%2C_katedr%C3%A1la_sv._Petra_a_Pavla.jpg/1280px-Brno%2C_katedr%C3%A1la_sv._Petra_a_Pavla.jpg" alt="Petrov" onerror="this.src='https://via.placeholder.com/800x600?text=Obrázek+nenalezen'">
+                    <p>Katedrála sv. Petra a Pavla</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Brno-Freiheitsplatz2.jpg" alt="Náměstí Svobody" onerror="this.src='https://via.placeholder.com/800x600?text=Obrázek+nenalezen'">
+                    <p>Náměstí Svobody</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Villa_Tugendhat_in_Brno_02.jpg/800px-Villa_Tugendhat_in_Brno_02.jpg" alt="Vila Tugendhat" onerror="this.src='https://via.placeholder.com/800x600?text=Obrázek+nenalezen'">
+                    <p>Vila Tugendhat</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://cdn.kudyznudy.cz/files/0e/0e3445fe-7d32-4de6-92cf-b9e76fc755d4.webp?v=20250312100227" alt="Zelný trh" onerror="this.src='https://via.placeholder.com/800x600?text=Obrázek+nenalezen'">
+                    <p>Zelný trh</p>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Brno_Astronomical_Clock.jpg/250px-Brno_Astronomical_Clock.jpg" alt="Brněnský orloj" onerror="this.src='https://via.placeholder.com/800x600?text=Obrázek+nenalezen'">
+                    <p>Brněnský "orloj"</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Vytvořeno pro Školní projekt | Brno, Česko</p>
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            var buttons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
