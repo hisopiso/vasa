@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen Video</title>
+    <title>Fullscreen YouTube Video</title>
     <style>
         /* Odstraníme okraje a nastavíme černé pozadí */
         body, html {
@@ -12,17 +12,10 @@
             width: 100%;
             height: 100%;
             background-color: black;
-            overflow: hidden; /* Skryje posuvníky na boku */
+            overflow: hidden; /* Skryje posuvníky, aby to vypadalo čistě */
         }
 
-        /* Styl pro video soubor (.mp4) */
-        video {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover; /* Vyplní celou obrazovku (pokud nechceš ořez, změň na 'contain') */
-        }
-
-        /* Styl pro YouTube */
+        /* Roztáhneme YouTube přehrávač na maximum */
         iframe {
             width: 100vw;
             height: 100vh;
@@ -32,14 +25,11 @@
 </head>
 <body>
 
-    <video autoplay loop muted controls>
-        <source src="https://cz.pornhub.com/view_video.php?viewkey=ph6267cfb2219e4" type="video/mp4">
-        Tvůj prohlížeč nepodporuje přehrávání videa.
-    </video>
+    <iframe 
+        src="https://www.youtube.com/shorts/F-JnS-b4YgA?feature=share?autoplay=1&mute=1&controls=1&rel=0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+    </iframe>
 
-    
-    u tohoto kódu a vlož ID svého videa.
-         ========================================== -->
-    
-    </body>
+</body>
 </html>
