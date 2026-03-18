@@ -3,33 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen YouTube Video</title>
+    <title>Moje Fullscreen Video</title>
     <style>
-        /* Odstraníme okraje a nastavíme černé pozadí */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             background-color: black;
-            overflow: hidden; /* Skryje posuvníky, aby to vypadalo čistě */
+            overflow: hidden;
         }
 
-        /* Roztáhneme YouTube přehrávač na maximum */
-        iframe {
+        video {
             width: 100vw;
             height: 100vh;
-            border: none;
+            object-fit: cover; /* Roztáhne video přes celou obrazovku */
         }
     </style>
 </head>
 <body>
 
-    <iframe 
-        src="https://www.youtube.com/embed/ID_TVOHO_VIDEA?autoplay=1&mute=1&controls=1&rel=0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-    </iframe>
+    <video autoplay loop muted controls>
+        <source src="video.mp4" type="video/mp4">
+        
+        Tvůj prohlížeč nepodporuje přehrávání videa.
+    </video>
 
 </body>
 </html>
